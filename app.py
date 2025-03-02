@@ -1,7 +1,6 @@
 # #%%
-# ''' Dash Analysis'''
 
-#%%
+''' Dash Analysis'''
 
 import pandas as pd 
 import matplotlib.pyplot as plt
@@ -13,7 +12,7 @@ url = f"https://drive.google.com/uc?export=download&id={file_id}"
 
 output = "Londonviz.csv"
 gdown.download(url, output, quiet=False)
-df1_cleaned= pd.read_csv(url,low_memory=False)
+df1_cleaned = pd.read_csv(output, low_memory=False)
 df2 = df1_cleaned.copy()
 
 df2['property_type'] = df2['property_type'].astype(str).fillna('Unknown')
@@ -28,17 +27,19 @@ fontdict_label = {'font-family': 'serif', 'color': 'darkred', 'font-size': '16px
 fontdict_title = {'font-family': 'serif', 'color': 'black', 'font-size': '20px'}
 
 #%%
-# # %%
-# ''' Dash layout'''
+''' Dash layout'''
+
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
 
-external_stylesheets= external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-my_app = dash.Dash('My app', external_stylesheets= external_stylesheets)
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
+# my_app = dash.Dash('My app', external_stylesheets= external_stylesheets)
+my_app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = my_app.server
 my_app.layout = html.Div([
     html.H1("London Airbnb Exploration",
             style={
