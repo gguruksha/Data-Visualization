@@ -2,11 +2,17 @@
 # ''' Dash Analysis'''
 
 #%%
+
 import pandas as pd 
 import matplotlib.pyplot as plt
+import gdown
 
-# df1_cleaned= pd.read_csv('/Users/gurukshagurnani/Desktop/updated_dataframe.csv',low_memory=False)
-url='https://raw.githubusercontent.com/pradhyuman-yadav/dash-guruksha/main/updated_dataframe.csv'
+# url='https://drive.google.com/file/d/1sz5ZUuC2slctS0bAtBDJ5ieEVV0hELWv/view?usp=share_link'
+file_id = "1sz5ZUuC2slctS0bAtBDJ5ieEVV0hELWv"
+url = f"https://drive.google.com/uc?export=download&id={file_id}"
+
+output = "Londonviz.csv"
+gdown.download(url, output, quiet=False)
 df1_cleaned= pd.read_csv(url,low_memory=False)
 df2 = df1_cleaned.copy()
 

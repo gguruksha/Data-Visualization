@@ -7,3 +7,4 @@ gunicorn
 pandas
 plotly
 matplotlib
+gdown
